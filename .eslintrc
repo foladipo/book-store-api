@@ -1,6 +1,6 @@
 {
     "root": true,
-    "extends": "airbnb",
+    "extends": "eslint:recommended",
     "globals": {},
     "env": {
       "es6": true,
@@ -15,12 +15,6 @@
         "ignoreStrings": true,
         "ignoreTemplateLiterals": true
       }],
-      "import/no-extraneous-dependencies": ["error", {
-        "devDependencies": [
-          "server/tests/**"
-        ]
-      }
-      ],
       "one-var-declaration-per-line": "error",
       "new-cap": "off",
       "consistent-return": "off",
@@ -40,7 +34,11 @@
               "MethodDefinition": true,
               "ClassDeclaration": true
           }
-      }]
+      }],
+      "semi": "warn",
+      "no-console": "warn",
+      "no-unreachable": "error",
+      "quotes": ["warn", "double"]
     }
   }
   
