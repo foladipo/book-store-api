@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/nodemon index.js"
+    "start": "./node_modules/.bin/babel-node index.js",
+    "start:watch": "./node_modules/.bin/nodemon index.js --exec babel-node --presets @babel/preset-env"
   },
   "repository": {
     "type": "git",
@@ -29,5 +30,10 @@
     "eslint": "^5.8.0",
     "express": "^4.16.4",
     "nodemon": "^1.18.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.0"
   }
 }
