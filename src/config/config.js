@@ -2,13 +2,10 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-let enableLogging;
-if (process.env.SEQUELIZE_LOGGING === "false") {
-    enableLogging = false;
-} else {
-    enableLogging = true;
-}
-
+const shouldEnableSequelizeLogging = () => {
+    const DISABLE_SEQUELIZE_LOGGING = false;
+    return process.env.SEQUELIZE_LOGGING || DISABLE_SEQUELIZE_LOGGING;
+};
 const config = {
     development: {
         database: process.env.POSTGRES_DB,
@@ -24,7 +21,8 @@ const config = {
                 min: 0,
                 idle: 10000
             },
-            logging: enableLogging
+            logging: shouldEnableSequelizeLogging,
+            operatorsAliases: false
         }
     }
 };
