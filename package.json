@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/babel-node index.js",
-    "start:watch": "./node_modules/.bin/nodemon index.js --exec babel-node --presets @babel/preset-env"
+    "start:watch": "./node_modules/.bin/nodemon index.js --exec babel-node --presets @babel/preset-env",
+    "db:migrate": "./node_modules/.bin/sequelize db:migrate"
   },
   "repository": {
     "type": "git",
