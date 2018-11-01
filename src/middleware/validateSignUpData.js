@@ -91,24 +91,24 @@ export default function validateSignUpData(req, res, next) {
     }
 
     const password = reqBody.password;
+    const DEFAULT_PASSWORD_ERROR_MESSAGE = "Please enter a strong password to sign up. Such a password must be at least 8 characters long and contain one lowercase letter, one uppercase letter, one number and one symbol/special character.";
     if (password) {
         if (!isValidPassword(password)) {
             res.status(400)
                 .json({
-                    message: "Please enter a strong password to sign up.",
+                    message: DEFAULT_PASSWORD_ERROR_MESSAGE,
                     error: "InvalidPasswordError"
                 });
             return;
         }
     } else {
         let errorType = "MissingPasswordError";
-        const message = "Please enter a strong password to sign up.";
         if (password === "") {
             errorType = "EmptyPasswordError";
         }
         res.status(400)
             .json({
-                message,
+                message: DEFAULT_PASSWORD_ERROR_MESSAGE,
                 error: errorType
             });
         return;
