@@ -6,9 +6,10 @@ dotenv.config();
 
 /**
  * @name initSequelize
+ * @function initSequelize
  * @description Returns an instance of Sequelize that has been initialized
  * with appropriate data like database name, host, port etc.
- * @return {Sequelize} - An instance of Sequelize.
+ * @returns {Sequelize} - An instance of Sequelize.
  */
 export default function initSequelize() {
     const currentEnv = process.env.NODE_ENV || "development";
