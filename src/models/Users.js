@@ -4,23 +4,26 @@ import initSequelize from "../util/initSequelize";
 const sequelizeInstance = initSequelize();
 const Users = sequelizeInstance.define("Users", {
     firstName: {
-      type: Sequelize.STRING
+        type: Sequelize.STRING
     },
     lastName: {
-      type: Sequelize.STRING
+        type: Sequelize.STRING
     },
     username: {
-      type: Sequelize.STRING
+        type: Sequelize.STRING
     },
     password: {
-      type: Sequelize.STRING
+        type: Sequelize.STRING
     },
     createdAt: {
-      type: Sequelize.DATE
+        type: Sequelize.DATE
     },
     updatedAt: {
-      type: Sequelize.DATE
+        type: Sequelize.DATE
     }
-});
+}, {
+        freezeTableName: true
+    }
+);
 
 export default Users;
