@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/babel-node index.js",
     "start:watch": "./node_modules/.bin/nodemon index.js --exec babel-node --presets @babel/preset-env",
-    "db:migrate": "./node_modules/.bin/sequelize db:migrate"
+    "db:migrate": "./node_modules/.bin/sequelize db:migrate",
+    "db:migrate:undo:all": "./node_modules/.bin/sequelize db:migrate:undo:all"
   },
   "repository": {
     "type": "git",
@@ -27,10 +28,12 @@
   },
   "homepage": "https://github.com/foladipo/book-store-api#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "eslint": "^5.8.0",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.3.0",
     "nodemon": "^1.18.5",
     "pg": "^7.6.0",
     "pg-hstore": "^2.3.2",
