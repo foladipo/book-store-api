@@ -3,8 +3,8 @@ import isValidName from "../util/isValidName";
 import isValidPassword from "../util/isValidPassword";
 
 /**
- * @name validateSignUpData
- * @function validateSignUpData
+ * @name validateSignUpRequest
+ * @function validateSignUpRequest
  * @description Checks that all the data required to create a new account
  * (first name, password etc) are present in a sign up request and that
  * they are valid (e.g a valid email address is to be used as an email).
@@ -14,7 +14,7 @@ import isValidPassword from "../util/isValidPassword";
  * @param {Function} next - the next middleware in Express' call stack.
  * @returns {void}
  */
-export default function validateSignUpData(req, res, next) {
+export default function validateSignUpRequest(req, res, next) {
     const reqBody = req.body;
 
     const firstName = reqBody.firstName;
