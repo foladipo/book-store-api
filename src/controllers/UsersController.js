@@ -1,5 +1,8 @@
 import bcrypt from "bcryptjs";
 import JWT from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 import { Users } from "../models/";
 /**
@@ -11,9 +14,11 @@ export default class UsersController {
     /**
      * @name signUp
      * @method signUp
-     * @description A controller used to create new user accounts.
-     * @param {Object} req - data about the request sent to this controller.
-     * @param {Object} res - the response from this controller.
+     * @description A controller used to create new user accounts. If
+     * successful, it sends a response with a JWT token for further
+     * interactions with this app.
+     * @param {Request} req - data about the request sent to this controller.
+     * @param {Response} res - the response from this controller.
      * @returns {void}
      */
     static signUp(req, res) {
@@ -68,5 +73,56 @@ export default class UsersController {
                         });
                 }
             });
+    }
+
+
+    /**
+     * @name login
+     * @method login
+     * @description Logs a user (by sending a JWT token) in if they supply
+     * the right info. Sends an error response otherwise.
+     * @param {Request} req - Data about the HTTP request sent to
+     * this controller.
+     * @param {Response} res - Data sent back to the user e.g HTTP status
+     * codes, JSON responses etc.
+     * @return {void}
+     */
+    static login(req, res) {
+        const reqBody = req.body;
+        const username = reqBody.username;
+        const password = reqBody.password;
+        const lowerCaseUsername = username.toLowerCase();
+        const trimmedUsername = lowerCaseUsername.trim();
+        Users.findOne({
+            where: {
+                username: trimmedUsername
+            }
+        }).then((user) => {
+            if (user) {
+                const storedPasswordHash = user.password;
+                const isCorrectPassword =
+                    bcrypt.compareSync(password, storedPasswordHash);
+                if (isCorrectPassword) {
+                    const userDetails = {
+                        id: user.id,
+                        username: user.username,
+                        firstName: user.firstName,
+                        lastName: user.lastName
+                    };
+                    const token = JWT.sign(userDetails, process.env.JWT_PRIVATE_KEY, { expiresIn: "3d" });
+                    res.status(200).json({
+                        message: "Logged in successfully.",
+                        token
+                    });
+                    return;
+                }
+            }
+    
+            res.status(403)
+                .json({
+                    message: "Nope. Those login details are incorrect. Please correct your username and/or password and try again.",
+                    error: "IncorrectLoginDetailsError"
+                });
+        });
     }
 }
