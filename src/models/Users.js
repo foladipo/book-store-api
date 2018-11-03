@@ -3,6 +3,9 @@ import initSequelize from "../util/initSequelize";
 
 const sequelizeInstance = initSequelize();
 const Users = sequelizeInstance.define("Users", {
+    id: {
+        type: Sequelize.INTEGER,
+    },
     firstName: {
         type: Sequelize.STRING
     },
