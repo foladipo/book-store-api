@@ -21,7 +21,7 @@ module.exports = {
                 allowNull: false
             },
             publicationDate: {
-                type: Sequelize.DATE,
+                type: Sequelize.DATEONLY,
                 allowNull: false
             },
             genres: {

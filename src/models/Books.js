@@ -13,7 +13,7 @@ const Books = sequelizeInstance.define("Books", {
         type: Sequelize.STRING
     },
     publicationDate: {
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
     },
     genres: {
         type: Sequelize.JSONB
