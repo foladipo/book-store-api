@@ -3,9 +3,6 @@ import initSequelize from "../util/initSequelize";
 
 const sequelizeInstance = initSequelize();
 const Books = sequelizeInstance.define("Books", {
-    id: {
-        type: Sequelize.INTEGER,
-    },
     ownerId: {
         type: Sequelize.INTEGER
     },
