@@ -2,9 +2,10 @@ import bcrypt from "bcryptjs";
 import JWT from "jsonwebtoken";
 import dotenv from "dotenv";
 
+import { Users } from "../models/";
+
 dotenv.config();
 
-import { Users } from "../models/";
 /**
  * @class UsersController
  * @name UsersController
