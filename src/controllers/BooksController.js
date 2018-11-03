@@ -1,3 +1,5 @@
+import { Books } from "../models";
+
 /**
  * @class BooksController
  * @name BooksController
@@ -13,10 +15,29 @@ export default class BooksController {
      * @returns {void}
      */
     static addNewBook(req, res) {
-        const { decodedUserProfile } = req;
-        res.json({
-            message: "You have gotten to the add new book route!",
-            decodedUserProfile
-        });
+        const ownerId = req.decodedUserProfile.id;
+        const { title, author, publicationDate, genres, isPrivate } = req.body;
+        const newBook = {
+            ownerId,
+            title,
+            author,
+            publicationDate,
+            genres,
+            isPrivate
+        };
+
+        Books.create(newBook)
+            .then(createdBook => {
+                res.status(200).json({
+                    message: "Book successfully created.",
+                    createdBook
+                });
+            })
+            .catch(() => {
+                res.status(500).json({
+                    message: "An error occurred while trying to add this book. Please check your request and try again.",
+                    error: "FailedToAddNewBookError"
+                });
+            });
     }
 }
