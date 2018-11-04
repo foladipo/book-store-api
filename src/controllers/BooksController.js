@@ -135,6 +135,11 @@ export default class BooksController {
                     });
                 }
             })
-            .catch();
+            .catch(() => {
+                res.status(500).json({
+                    message: "An error occurred while getting the book you requested. Please check your request and try again.",
+                    error: "FailedFetchBookError"
+                });
+            });
     }
 }
