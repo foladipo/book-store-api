@@ -26,7 +26,7 @@ const config = {
         }
     },
     production: {
-        use_env_variable: "ELEPHANTSQL_DB_URI",
+        use_env_variable: "PRODUCTION_DB_FULL_URI",
         pool: {
             max: 5,
             min: 0,
