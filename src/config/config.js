@@ -24,6 +24,18 @@ const config = {
             logging: shouldEnableSequelizeLogging,
             operatorsAliases: false
         }
+    },
+    production: {
+        use_env_variable: "ELEPHANTSQL_DB_URI",
+        pool: {
+            max: 5,
+            min: 0,
+            idle: 10000
+        },
+        dialect: "postgres",
+        dialectOptions: {
+            ssl: true
+        }
     }
 };
 
