@@ -142,4 +142,81 @@ export default class BooksController {
                 });
             });
     }
+
+    /**
+     * @name deleteBook
+     * @method deleteBook
+     * @description A controller used to delete a book.
+     * @param {Request} req - data about the request sent to this controller.
+     * @param {Response} res - the response from this controller.
+     * @returns {void}
+     */
+    static deleteBook(req, res) {
+        const pathInfo = req.path.split("/");
+        const bookIdString = pathInfo[pathInfo.length - 1];
+
+        const bookId = Number(bookIdString);
+        if (Number.isNaN(bookId)) {
+            res.status(400).json({
+                message: "The book ID you supplied is not a valid number.",
+                error: "InvalidBookIdError"
+            });
+            return;
+        }
+        if (bookId % 1 > 0) {
+            res.status(400).json({
+                message: "The ID of the book you are trying to delete must be an integer.",
+                error: "NonIntegerBookIdError"
+            });
+            return;
+        }
+
+        Books
+            .findOne({
+                where: {
+                    id: bookId
+                }
+            })
+            .then(book => {
+                if (!book) {
+                    res.status(404).json({
+                        message: "The book you tried to delete does not exist.",
+                        error: "BookNotFoundError"
+                    });
+                    return;
+                }
+
+                const requesterId = req.decodedUserProfile.id;
+                if (book.ownerId === requesterId) {
+                    Books
+                        .destroy({
+                            where: {
+                                id: bookId
+                            }
+                        })
+                        .then(() => {
+                            res.status(200).json({
+                                message: "Book successfully deleted."
+                            });
+                        })
+                        .catch(() => {
+                            res.status(500).json({
+                                message: "An error occurred while deleting this book of yours. Please check your request and try again.",
+                                error: "FailedDeleteBookError"
+                            });
+                        });
+                } else {
+                    res.status(403).json({
+                        message: "You do not have the permissions to delete this book.",
+                        error: "BookAccessDeniedError"
+                    });
+                }
+            })
+            .catch(() => {
+                res.status(500).json({
+                    message: "An error occurred while deleting that book. Please check your request and try again.",
+                    error: "FailedDeleteBookError"
+                });
+            });
+    }
 }
