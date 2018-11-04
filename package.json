@@ -31,6 +31,9 @@
   },
   "homepage": "https://github.com/foladipo/book-store-api#readme",
   "dependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
@@ -45,9 +48,6 @@
     "sequelize-cli": "^5.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/node": "^7.0.0",
-    "@babel/preset-env": "^7.1.0"
+    "@babel/node": "^7.0.0"
   }
 }
