@@ -4,6 +4,9 @@
   "description": "An API for storing, modifying and getting different books.",
   "main": "index.js",
   "scripts": {
+    "build": "./node_modules/.bin/babel src --out-dir dist/src && ./node_modules/.bin/babel index.js --out-file dist/index.js",
+    "start:useBuilt": "node dist/index.js",
+    "deploy": "NODE_ENV=production npm run db:migrate && npm run build && NODE_ENV=production npm run start:useBuilt",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/.bin/babel-node index.js",
     "start:watch": "./node_modules/.bin/nodemon index.js --exec babel-node --presets @babel/preset-env",
@@ -42,6 +45,7 @@
     "sequelize-cli": "^5.2.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
     "@babel/node": "^7.0.0",
     "@babel/preset-env": "^7.1.0"
