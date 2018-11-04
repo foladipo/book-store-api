@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import JWT from "jsonwebtoken";
 import dotenv from "dotenv";
 
-import { Users } from "../models/";
+import { Books, Users } from "../models/";
 
 dotenv.config();
 
@@ -76,7 +76,6 @@ export default class UsersController {
             });
     }
 
-
     /**
      * @name login
      * @method login
@@ -125,5 +124,38 @@ export default class UsersController {
                     error: "IncorrectLoginDetailsError"
                 });
         });
+    }
+
+    /**
+     * @name getMyBooks
+     * @method getMyBooks
+     * @description A controller used to fetch all the books that belong
+     * to the user making the request.
+     * @param {Request} req - data about the request sent to this controller.
+     * @param {Response} res - the response from this controller.
+     * @returns {void}
+     */
+    static getMyBooks(req, res) {
+        const requesterId = req.decodedUserProfile.id;
+
+        Books
+            .findAll({
+                where: {
+                    ownerId: requesterId
+                },
+                attributes: ["title", "author", "publicationDate", "genres"]
+            })
+            .then(books => {
+                res.status(200).json({
+                    message: "Successfully found all your books.",
+                    books
+                });
+            })
+            .catch(() => {
+                res.status(500).json({
+                    message: "An error occurred while fetching your books.",
+                    error: "FailedGetMyBooksError"
+                });
+            });
     }
 }
