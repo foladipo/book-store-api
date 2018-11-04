@@ -7,5 +7,6 @@ import validateNewBook from "../middleware/validateNewBook";
 const booksRoute = express.Router();
 booksRoute.route("/addNewBook").post(validateToken, validateNewBook, BooksController.addNewBook);
 booksRoute.route("/").get(validateToken, BooksController.getAllBooks);
+booksRoute.route("/:id").get(validateToken, BooksController.getBook);
 
 export default booksRoute;
