@@ -7,13 +7,19 @@ Book Store is RESTful API that enables you to create, edit and share your favour
 ## Table of Contents
 
   1. [Accessing a Live Instance](#accessing-a-live-instance)
+  1. [API Documentation](#api-documentation)
   1. [Our Tech Stack](#our-tech-stack)
   1. [Installation and Setup](#installation-and-setup)
   1. [Contributing](#contributing)
   1. [Licence](#license)
 
 ## Accessing a Live Instance
+
 An instance of this app has been deployed to Heroku and is accessible to everyone. You may access it by visiting [this link](https://book-store-api-app.herokuapp.com/).
+
+## API Documentation
+
+The complete documentation for this RESTful API and all of its endpoints can be found at [this link](https://documenter.getpostman.com/view/5802609/RzZ6KgwS).
 
 ## Our Tech Stack
 
