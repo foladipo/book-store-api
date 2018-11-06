@@ -1,6 +1,6 @@
 # Welcome to the Book Store!
 Book Store is RESTful API that enables you to create, edit and share your favourite books. It's stable, intuitive and, best of all, **free**! It was 
- built using modern tech tech like
+ built using modern technologies like
  [PostgreSQL](https://www.postgresql.org/) and
  [Node](https://nodejs.org/en/).
 
@@ -22,6 +22,7 @@ This project was built using modern technology tools. These include:
 - [PostgreSQL](https://www.postgresql.org/): an open source database.
 - [Sequelize](docs.sequelizejs.com/): a promise-based O.R.M for Node.js v4
  and above. It supports PostgreSQL, MySQL, SQLite and MSSQL.
+- [Git](https://git-scm.com/): an open-source version control software that is used to keep track of the changes made over time to different files. It also makes it easy for multiple people to collaboratively change those files and share their changes.
 
 ## Installation and setup
 
@@ -34,10 +35,10 @@ Here are the steps you need to follow to run this project on your computer:
  for instructions on setting up PostgreSQL on your computer. When you're
  done, please note your database name, port, username and password.
 
+- **Install Git**: If you don't have Git installed, please consult [this link](https://google.com/search?q=how+to+install+git) for information about how to install it on your computer.
+
 - **Open a terminal/command prompt** on your computer and `cd` into your
  preferred path/location.
-
-- **Make sure you have Git installed**: If you don't, please consult [this link](https://google.com/search?q=how+to+install+git) for information about how to install it on your computer.
 
 - **Clone this repo**: Enter this command in the terminal:
 
