@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "An API for storing, modifying and getting different books.",
   "main": "index.js",
+  "engines": {
+    "node": ">=6 <10"
+  },
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir dist/src && ./node_modules/.bin/babel index.js --out-file dist/index.js",
     "db:migrate": "./node_modules/.bin/sequelize db:migrate",
@@ -32,9 +35,9 @@
   },
   "homepage": "https://github.com/foladipo/book-store-api#readme",
   "dependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
+    "@babel/cli": ">=7.4.4",
+    "@babel/core": ">=7.4.5",
+    "@babel/preset-env": ">=7.4.5",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
@@ -46,11 +49,11 @@
     "nodemon": "^1.18.5",
     "pg": "^7.6.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^4.41.0",
-    "sequelize-cli": "^5.2.0"
+    "sequelize": ">=5.3.0",
+    "sequelize-cli": ">=5.5.0"
   },
   "devDependencies": {
-    "@babel/node": "^7.0.0"
+    "@babel/node": ">=7.4.5"
   },
   "heroku-run-build-script": true
 }

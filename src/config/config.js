@@ -21,8 +21,7 @@ const config = {
                 min: 0,
                 idle: 10000
             },
-            logging: shouldEnableSequelizeLogging,
-            operatorsAliases: false
+            logging: shouldEnableSequelizeLogging
         }
     },
     production: {
