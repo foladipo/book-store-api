@@ -30,7 +30,13 @@ export default class BooksController {
             .then(createdBook => {
                 res.status(200).json({
                     message: "Book successfully created.",
-                    createdBook
+                    createdBook: {
+                        title: createdBook.title,
+                        author: createdBook.author,
+                        publicationDate: createdBook.publicationDate,
+                        genres: createdBook.genres,
+                        isPrivate: createdBook.isPrivate
+                    }
                 });
             })
             .catch(() => {
@@ -130,7 +136,7 @@ export default class BooksController {
                     });
                 } else {
                     res.status(403).json({
-                        message: "You do not have the permissions to view this book.",
+                        message: "You do not have permission to view this book.",
                         error: "BookAccessDeniedError"
                     });
                 }
@@ -318,7 +324,7 @@ export default class BooksController {
                         });
                 } else {
                     res.status(403).json({
-                        message: "You do not have the permissions to delete this book.",
+                        message: "You do not have permission to delete this book.",
                         error: "BookAccessDeniedError"
                     });
                 }
